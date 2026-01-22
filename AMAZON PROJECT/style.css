@@ -9,7 +9,7 @@
   background-color: #0f1111;
   color: white;
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: space-evenly;
 }
 .nav-logo {

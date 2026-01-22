@@ -23,6 +23,9 @@ def skills():
 def projects():
     return render_template('projects.html')
 
+@app.route('/Contact')
+def contact():
+    return render_template('ContactMe.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
