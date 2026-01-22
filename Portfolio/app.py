@@ -1,8 +1,12 @@
 from flask import Flask, render_template
-
+import sqlite3
 
 app = Flask(__name__)
 
+def get_db_connection():
+    conn = sqlite3.connect('portfolio.db')
+    conn.row_factory = sqlite3.Row  # allows dict-style access //Each row is of type  sqlite3.Row
+    return conn
 
 @app.route('/')
 def home():
@@ -11,7 +15,14 @@ def home():
 
 @app.route('/education')
 def education():
-    return render_template('education.html')
+    conn = get_db_connection()
+    education_data = conn.execute(
+        'SELECT degree, institute, graduation_info, score FROM education'
+    ).fetchall()
+    conn.close()
+
+    return render_template('education.html', education=education_data)
+    #return render_template('education.html')
 
 
 @app.route('/skills')

@@ -2,7 +2,19 @@
 <div class="container py-5 mt-4">
   <h2 class="mb-3 text-primary fw-bold">Education</h2>
 
+  {% for edu in education %}
+  <!--Loop through each education record //education =
+  Python list edu = one row (sqlite3.Row)-->
+
   <div class="edu-box mb-4 p-3 bg-white shadow-sm rounded">
+    <h5 class="fw-bold">{{ edu['degree'] }}</h5>
+    <p>{{ edu['institute'] }}</p>
+    <p>{{ edu['graduation_info'] }}</p>
+    <p class="fw-semibold">{{ edu['score'] }}</p>
+  </div>
+  {% endfor %}
+
+  <!-- <div class="edu-box mb-4 p-3 bg-white shadow-sm rounded">
     <h5 class="fw-bold">Bachelor of Engineering in Computer Science</h4>
     <p>RV Institute of Technology & Management, Bangalore</p>
     <p>Expected Graduation: June 2028</p>
@@ -21,6 +33,6 @@
     <p>DEEKSHA PU College, Bangalore</p>
     <p>Completed: May 2025 | Karnataka PUE Board</p>
     <p class="fw-semibold">Math: 100/100 • Overall: 95% • PCM: 97%</p>
-  </div>
+  </div> -->
 </div>
 {% endblock %}
