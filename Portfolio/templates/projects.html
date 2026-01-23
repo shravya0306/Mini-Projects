@@ -1,36 +1,18 @@
 {% extends 'index.html' %} {% block content %}
 <div class="container py-5 mt-4">
   <h2 class="mb-4">Projects</h2>
+
   <div class="row g-4">
+    {% for p in projects %}
     <div class="col-md-6 col-lg-4">
       <div class="card shadow-sm h-100">
         <div class="card-body">
-          <h5 class="card-title fw-bold">
-            Personal Portfolio Website (Flask + Bootstrap)
-          </h5>
-          <p class="card-text">
-            A fully responsive multi-page portfolio website built using Flask,
-            Bootstrap 5, and modular Jinja templates. Includes dedicated pages
-            for Education, Skills, Projects, and Contact, with clean navigation
-            and reusable layouts.
-          </p>
+          <h5 class="card-title fw-bold">{{ p["title"] }}</h5>
+          <p class="card-text">{{ p["description"] }}</p>
         </div>
       </div>
     </div>
-    <div class="col-md-6 col-lg-4">
-      <div class="card shadow-sm h-100">
-        <div class="card-body">
-          <h5 class="card-title fw-bold">
-            Student Attendance Tracker (Python)
-          </h5>
-          <p class="card-text">
-            A simple attendance‑tracking tool built using Python, CSV storage,
-            and a command-line interface. Allows adding students, marking
-            attendance, and generating daily/overall attendance reports.
-          </p>
-        </div>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}

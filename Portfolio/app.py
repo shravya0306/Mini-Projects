@@ -25,18 +25,30 @@ def education():
     #return render_template('education.html')
 
 
-@app.route('/skills')
-def skills():
-    return render_template('skills.html')
-
-
 @app.route('/projects')
 def projects():
-    return render_template('projects.html')
+    conn = get_db_connection()
+    projects_data = conn.execute(
+        'SELECT title, description FROM projects'
+    ).fetchall()
+    conn.close()
 
-@app.route('/Contact')
+    return render_template('projects.html', projects=projects_data)
+
+
+
+
+
+@app.route('/contact')
 def contact():
-    return render_template('ContactMe.html')
+    conn = get_db_connection()
+    contact_data = conn.execute(
+        'SELECT name, email, phone, address FROM contact WHERE id = 1'
+    ).fetchone()
+    conn.close()
+
+    return render_template('ContactMe.html', contact=contact_data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
