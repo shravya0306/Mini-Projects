@@ -1,0 +1,29 @@
+{% extends 'index.html' %} {% block content %}
+<div class="container py-5 mt-4">
+  <h2 class="mb-3 text-primary fw-bold">Certifications</h2>
+
+  <div class="row g-4">
+    <!-- Left column -->
+    <div class="col-12 col-md-6">
+      {% for cert in left %}
+      <div class="cert-box mb-4 p-3 bg-white shadow-sm rounded">
+        <h5 class="fw-bold mb-2">{{ cert['course'] }}</h5>
+        <p class="mb-1">{{ cert['MOOC'] }}</p>
+        <p class="mb-0 text-muted">{{ cert['date'] }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Right column -->
+    <div class="col-12 col-md-6">
+      {% for cert in right %}
+      <div class="cert-box mb-4 p-3 bg-white shadow-sm rounded">
+        <h5 class="fw-bold mb-2">{{ cert['course'] }}</h5>
+        <p class="mb-1">{{ cert['MOOC'] }}</p>
+        <p class="mb-0 text-muted">{{ cert['date'] }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

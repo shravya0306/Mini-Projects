@@ -3,8 +3,6 @@
   <h2 class="mb-3 text-primary fw-bold">Education</h2>
 
   {% for edu in education %}
-  <!--Loop through each education record //education =
-  Python list edu = one row (sqlite3.Row)-->
 
   <div class="edu-box mb-4 p-3 bg-white shadow-sm rounded">
     <h5 class="fw-bold">{{ edu['degree'] }}</h5>
@@ -13,26 +11,5 @@
     <p class="fw-semibold">{{ edu['score'] }}</p>
   </div>
   {% endfor %}
-
-  <!-- <div class="edu-box mb-4 p-3 bg-white shadow-sm rounded">
-    <h5 class="fw-bold">Bachelor of Engineering in Computer Science</h4>
-    <p>RV Institute of Technology & Management, Bangalore</p>
-    <p>Expected Graduation: June 2028</p>
-    <p class="fw-semibold">Current SGPA: 9.5/10 (Semester 3)</p>
-  </div>
-
-  <div class="edu-box mb-4 p-3 bg-white shadow-sm rounded">
-    <h5 class="fw-bold">Online B.Sc in Data Science & Applications</h4>
-    <p>IIT Madras</p>
-    <p>Enrolled: August 2025 | Foundation Level</p>
-    <p class="fw-semibold">CGPA: 8</p>
-  </div>
-
-  <div class="edu-box mb-4 p-3 bg-white shadow-sm rounded">
-    <h5 class="fw-bold">Pre-University Course (PUC)</h4>
-    <p>DEEKSHA PU College, Bangalore</p>
-    <p>Completed: May 2025 | Karnataka PUE Board</p>
-    <p class="fw-semibold">Math: 100/100 • Overall: 95% • PCM: 97%</p>
-  </div> -->
 </div>
 {% endblock %}

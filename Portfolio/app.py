@@ -22,7 +22,7 @@ def education():
     conn.close()
 
     return render_template('education.html', education=education_data)
-    #return render_template('education.html')
+    
 
 
 @app.route('/projects')
@@ -34,6 +34,20 @@ def projects():
     conn.close()
 
     return render_template('projects.html', projects=project_data)
+
+@app.route('/certifications')
+def certifications():
+    conn = get_db_connection()
+    certs = conn.execute('SELECT course, MOOC, date FROM certifications').fetchall()
+    conn.close()
+
+    certs = list(certs)
+    mid = (len(certs) + 1) // 2   # left column gets the extra one when odd
+
+    left = certs[:mid]
+    right = certs[mid:]
+
+    return render_template('certifications.html', left=left, right=right)
 
 
 @app.route('/contact')
