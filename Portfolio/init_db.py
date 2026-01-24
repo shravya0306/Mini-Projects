@@ -1,6 +1,7 @@
 import sqlite3
 #SQLite is already included with Python. No setup, no server, no password.
 conn = sqlite3.connect('portfolio.db')
+conn.row_factory = sqlite3.Row
 cur = conn.cursor()
 
 cur.execute('''
@@ -40,19 +41,19 @@ VALUES (?, ?, ?, ?)
      'Math: 100/100 • Overall: 95% • PCM: 97%')
 ])
 
+cur.execute("DROP TABLE IF EXISTS projects")
 cur.execute("""
 CREATE TABLE IF NOT EXISTS projects (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL,
+    name TEXT NOT NULL,
     description TEXT NOT NULL
 )
 """)
-
 # Optional: avoid duplicates if you run this multiple times
 cur.execute("DELETE FROM projects")
 
 cur.executemany("""
-INSERT INTO projects (title, description)
+INSERT INTO projects (name, description)
 VALUES (?, ?)
 """, [
     (
@@ -85,6 +86,7 @@ VALUES (1, ?, ?, ?, ?)
     "+91 8217566721",
     "JP Nagar, Bengaluru, Karnataka, India"
 ))
+       
 
 conn.commit()
 conn.close()

@@ -28,15 +28,12 @@ def education():
 @app.route('/projects')
 def projects():
     conn = get_db_connection()
-    projects_data = conn.execute(
-        'SELECT title, description FROM projects'
+    project_data = conn.execute(
+        'SELECT name, description FROM projects'
     ).fetchall()
     conn.close()
 
-    return render_template('projects.html', projects=projects_data)
-
-
-
+    return render_template('projects.html', projects=project_data)
 
 
 @app.route('/contact')
