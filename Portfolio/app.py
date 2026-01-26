@@ -12,6 +12,10 @@ def get_db_connection():
 def home():
         return render_template('index.html')
 
+@app.route('/skills')
+def skills():
+        return render_template('skills.html')
+
 
 @app.route('/education')
 def education():
@@ -29,7 +33,7 @@ def education():
 def projects():
     conn = get_db_connection()
     project_data = conn.execute(
-        'SELECT name, description FROM projects'
+        'SELECT name, technology, description FROM projects'
     ).fetchall()
     conn.close()
 

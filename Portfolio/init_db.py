@@ -4,6 +4,7 @@ conn = sqlite3.connect('portfolio.db')
 conn.row_factory = sqlite3.Row
 cur = conn.cursor()
 
+cur.execute("DROP TABLE IF EXISTS education")
 #SQLlite for EDUCATION table
 cur.execute('''
 CREATE TABLE IF NOT EXISTS education (
@@ -36,26 +37,31 @@ VALUES (?, ?, ?, ?)
 ])
 
 #SQLlite for PROJECTS table
+cur.execute("DROP TABLE IF EXISTS projects")
 cur.execute("""
 CREATE TABLE IF NOT EXISTS projects (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
+    technology TEXT NOT NULL,
     description TEXT NOT NULL
 )
 """)
 # # Optional: avoid duplicates if you run this multiple times
 # cur.execute("DELETE FROM projects")
+
 cur.execute("DELETE FROM projects")
 cur.executemany('''
-INSERT INTO projects (name, description)
-VALUES (?, ?)
+INSERT INTO projects (name, technology, description)
+VALUES (?, ?, ?)
 ''', [
     (
-        "Personal Portfolio Website (Flask + Bootstrap)",
+        "Personal Portfolio Website",
+        "Flask, Bootstrap 5, Jinja",
         "A fully responsive multi-page portfolio website built using Flask, Bootstrap 5, and modular Jinja templates. Includes dedicated pages for Education, Skills, Projects, and Contact, with clean navigation and reusable layouts."
     ),
     (
-        "Student Attendance Tracker (Python)",
+        "Student Attendance Tracker",
+        "Python, CSV, Command-Line Interface",
         "A simple attendance-tracking tool built using Python, CSV storage, and a command-line interface. Allows adding students, marking attendance, and generating daily/overall attendance reports."
     )
 ])
@@ -98,18 +104,28 @@ INSERT INTO certifications (course, MOOC, date)
 VALUES (?,?,?)
 """, [
     (
-        "AWS Certified Cloud Practitioner",
-        "Amazon Web Services",
-        "Issued March 2024"
-    ),
-    (
-        "Google IT Automation with Python Professional Certificate",
-        "Coursera",
-        "Issued August 2025"
-    ),
-    (
-        " Meta Front-End Developer Professional Certificate",
+        "Practical C++:Learn C++ Basics Step By Step",
         "Udemy",
+        "Issued September 2024"
+    ),
+    (
+        "Build 10 Python Beginner Projects From Scratch",
+        "Udemy",
+        "Issued September 2025"
+    ),
+    (
+        "Build a Full-Stack Web App Form with Python, Flask and MySQL",
+        "Udemy",
+        "Issued January 2026"
+    ),
+    (
+        "CompTIA Tech+:Operating Systems Mastery",
+        "Udemy",
+        "Issued December 2025"
+    ),
+    (
+        "Jav OOP:Multi-level Inheritance",
+        "Infosys Springboard",
         "Issued December 2025"
     )
 ])
