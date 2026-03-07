@@ -1,13 +1,27 @@
-'''Titanic Survival Prediction Program — Full Explanation
+"""
+Titanic Survival Prediction using Machine Learning
 
-This program builds a machine learning model to predict whether a Titanic passenger survived or not using passenger information like age, class, sex, fare, etc.
+This program builds a machine learning model to predict whether a passenger
+on the Titanic survived or not based on passenger information.
 
-The program uses Python, Pandas, NumPy, and Scikit-Learn.
+Workflow of the program:
+1. Load the Titanic dataset.
+2. Explore the dataset structure and statistics.
+3. Handle missing values and remove unnecessary columns.
+4. Convert categorical variables (Sex, Embarked) into numerical values.
+5. Split the dataset into training and testing sets.
+6. Train a Logistic Regression classification model.
+7. Predict survival outcomes for test data.
+8. Evaluate the model using accuracy score.
+9. Visualize survival patterns using graphs.
+10. Save the trained model for future use.
 
-The workflow follows the standard Machine Learning Pipeline:
-
-Load Data → Explore Data → Clean Data → Convert Data → 
-Split Data → Train Model → Predict → Evaluate Model'''
+Technologies used:
+- Python
+- Pandas and NumPy for data manipulation
+- Scikit-learn for machine learning
+- Matplotlib and Seaborn for data visualization
+"""
 
 
 
